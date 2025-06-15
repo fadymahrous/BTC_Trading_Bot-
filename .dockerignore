@@ -1,0 +1,15 @@
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.log
+logs/*
+.DS_Store
+.Trading_Bod_Production
+*.code-workspace
+main_BackGround_Get_OHLC_Production.py
+main_Dump-Load.py
+main_Get_old_OHLC_on_Demaned.py
+main_TradeLogic_1min_Backup.py
+main_TradeLogic_5min_History.py
+main_TradeLogic_5min_Production.py

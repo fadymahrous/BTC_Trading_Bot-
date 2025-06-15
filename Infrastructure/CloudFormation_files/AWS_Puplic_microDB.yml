@@ -1,0 +1,53 @@
+AWSTemplateFormatVersion: "2010-09-09"
+Description: Smallest PostgreSQL RDS publicly accessible (testing only, low-cost)
+
+Resources:
+
+  PostgreSQLSecurityGroup:
+    Type: AWS::EC2::SecurityGroup
+    Properties:
+      GroupDescription: Enable PostgreSQL access from internet (INSECURE)
+      VpcId: !Ref DefaultVPC
+      SecurityGroupIngress:
+        - IpProtocol: tcp
+          FromPort: 5432
+          ToPort: 5432
+          CidrIp: 0.0.0.0/0
+
+  DBSubnetGroup:
+    Type: AWS::RDS::DBSubnetGroup
+    Properties:
+      DBSubnetGroupDescription: Subnet group for RDS instance
+      SubnetIds: !Ref DefaultSubnets
+      Tags:
+        - Key: Name
+          Value: SmallestPostgresSubnetGroup
+
+  PostgresDBInstance:
+    Type: AWS::RDS::DBInstance
+    Properties:
+      DBInstanceIdentifier: {DBInstanceIdentifier}
+      Engine: postgres
+      EngineVersion: 17.4
+      DBInstanceClass: db.t4g.micro
+      AllocatedStorage: 20
+      StorageType: gp2
+      MasterUsername:  {MasterUsername}
+      MasterUserPassword: {MasterUserPassword}
+      DBName: {DBName}
+      PubliclyAccessible: true
+      VPCSecurityGroups:
+        - !GetAtt PostgreSQLSecurityGroup.GroupId
+      DBSubnetGroupName: !Ref DBSubnetGroup
+      DeletionProtection: false
+      BackupRetentionPeriod: 0
+      MultiAZ: false
+      AutoMinorVersionUpgrade: true
+
+Parameters:
+  DefaultVPC:
+    Type: AWS::EC2::VPC::Id
+    Description: Select the default VPC (for public access)
+  DefaultSubnets:
+    Type: List<AWS::EC2::Subnet::Id>
+    Description: Select at least 2 subnets in different AZs (public or private)

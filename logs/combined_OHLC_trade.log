@@ -1,0 +1,347 @@
+2025-06-15 20:52:38,117 - INFO - [Database_Engine] - Database configuration loaded successfully.
+2025-06-15 20:52:38,551 - INFO - [Database_Engine] - SQLAlchemy engine created successfully.
+2025-06-15 20:52:38,892 - INFO - [Database_Engine] - Database connection test successful. Query result: 1
+2025-06-15 20:52:38,921 - INFO - [Database_Engine] - Database configuration loaded successfully.
+2025-06-15 20:52:38,938 - INFO - [Database_Engine] - SQLAlchemy engine created successfully.
+2025-06-15 20:52:39,224 - INFO - [Database_Engine] - Database connection test successful. Query result: 1
+2025-06-15 20:52:39,240 - INFO - [Database_Engine] - Database configuration loaded successfully.
+2025-06-15 20:52:39,264 - INFO - [Database_Engine] - SQLAlchemy engine created successfully.
+2025-06-15 20:52:39,512 - INFO - [Database_Engine] - Database connection test successful. Query result: 1
+2025-06-15 20:52:39,523 - INFO - [main] - Starting 5m OHLC fetch and load.
+2025-06-15 20:52:42,962 - INFO - [Fetch_Online_OHLC] - Table trade_btcusdt5m_ohlc does not exist. Creating Table and Schema if not exist...
+2025-06-15 20:52:42,963 - INFO - [Create_DatabaseSchema] - Creating schema 'trade' if it doesn't exist...
+2025-06-15 20:52:43,009 - INFO - [Create_DatabaseSchema] - Creating base partitioned table 'trade.trade_btcusdt5m_ohlc'...
+2025-06-15 20:52:43,062 - INFO - [Create_DatabaseSchema] - Table 'trade.trade_btcusdt5m_ohlc' and index 'idx_trade_btcusdt5m_ohlc_date' created successfully.
+2025-06-15 20:52:43,062 - INFO - [Fetch_Online_OHLC] - Inserting 1 OHLC records into trade_btcusdt5m_ohlc...
+2025-06-15 20:52:43,123 - ERROR - [Fetch_Online_OHLC] - CheckViolation: likely missing partition. Creating it...
+2025-06-15 20:52:43,124 - INFO - [Create_DatabaseSchema] - Creating partition for 2025-06-15...
+2025-06-15 20:52:43,161 - INFO - [main] - OHLC fetch complete.
+2025-06-15 20:52:43,225 - ERROR - [main] - Error in combined loop: There is no Data passed, this is an empty dataset
+Traceback (most recent call last):
+  File "c:\Users\fadyz\Desktop\Personal\python-mess\Trading_Bod_Production\main.py", line 119, in main
+    cleaner = RawData_Weighting_OHLC(raw_data)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\fadyz\Desktop\Personal\python-mess\Trading_Bod_Production\Core_Trade\RawData_Weighting_OHLC.py", line 10, in __init__
+    raise ValueError("There is no Data passed, this is an empty dataset")
+ValueError: There is no Data passed, this is an empty dataset
+2025-06-15 20:52:43,227 - INFO - [main] - Next run scheduled at 2025-06-15 18:57:10+00:00 UTC. Waiting 266.77 seconds.
+2025-06-15 20:57:10,000 - INFO - [main] - Starting 5m OHLC fetch and load.
+2025-06-15 20:57:10,299 - INFO - [Fetch_Online_OHLC] - Table trade_btcusdt5m_ohlc does not exist. Creating Table and Schema if not exist...
+2025-06-15 20:57:10,299 - INFO - [Create_DatabaseSchema] - Creating schema 'trade' if it doesn't exist...
+2025-06-15 20:57:10,335 - INFO - [Create_DatabaseSchema] - Creating base partitioned table 'trade.trade_btcusdt5m_ohlc'...
+2025-06-15 20:57:10,399 - INFO - [Create_DatabaseSchema] - Table 'trade.trade_btcusdt5m_ohlc' and index 'idx_trade_btcusdt5m_ohlc_date' created successfully.
+2025-06-15 20:57:10,399 - INFO - [Fetch_Online_OHLC] - Inserting 1 OHLC records into trade_btcusdt5m_ohlc...
+2025-06-15 20:57:10,454 - INFO - [main] - OHLC fetch complete.
+2025-06-15 20:57:10,558 - INFO - [main] - Evaluating trade logic for 2025-06-15 18:50:00+00:00
+2025-06-15 20:57:10,558 - INFO - [main] - Next run scheduled at 2025-06-15 19:02:10+00:00 UTC. Waiting 299.44 seconds.
+2025-06-15 21:02:10,000 - INFO - [main] - Starting 5m OHLC fetch and load.
+2025-06-15 21:02:10,297 - INFO - [Fetch_Online_OHLC] - Table trade_btcusdt5m_ohlc does not exist. Creating Table and Schema if not exist...
+2025-06-15 21:02:10,297 - INFO - [Create_DatabaseSchema] - Creating schema 'trade' if it doesn't exist...
+2025-06-15 21:02:10,354 - INFO - [Create_DatabaseSchema] - Creating base partitioned table 'trade.trade_btcusdt5m_ohlc'...
+2025-06-15 21:02:10,412 - INFO - [Create_DatabaseSchema] - Table 'trade.trade_btcusdt5m_ohlc' and index 'idx_trade_btcusdt5m_ohlc_date' created successfully.
+2025-06-15 21:02:10,412 - INFO - [Fetch_Online_OHLC] - Inserting 1 OHLC records into trade_btcusdt5m_ohlc...
+2025-06-15 21:02:10,492 - INFO - [main] - OHLC fetch complete.
+2025-06-15 21:02:10,576 - INFO - [main] - Evaluating trade logic for 2025-06-15 18:55:00+00:00
+2025-06-15 21:02:10,576 - INFO - [main] - Next run scheduled at 2025-06-15 19:07:10+00:00 UTC. Waiting 299.42 seconds.
+2025-06-15 21:07:10,001 - INFO - [main] - Starting 5m OHLC fetch and load.
+2025-06-15 21:07:10,300 - INFO - [Fetch_Online_OHLC] - Table trade_btcusdt5m_ohlc does not exist. Creating Table and Schema if not exist...
+2025-06-15 21:07:10,300 - INFO - [Create_DatabaseSchema] - Creating schema 'trade' if it doesn't exist...
+2025-06-15 21:07:10,303 - ERROR - [Fetch_Online_OHLC] - Could not verify wheter table exist or no for Details:: (psycopg2.OperationalError) server closed the connection unexpectedly
+	This probably means the server terminated abnormally
+	before or while processing the request.
+server closed the connection unexpectedly
+	This probably means the server terminated abnormally
+	before or while processing the request.
+
+[SQL: CREATE SCHEMA IF NOT EXISTS trade]
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+2025-06-15 21:07:10,303 - INFO - [Fetch_Online_OHLC] - Inserting 1 OHLC records into trade_btcusdt5m_ohlc...
+2025-06-15 21:07:10,306 - ERROR - [Fetch_Online_OHLC] - Unexpected error inserting data: Can't reconnect until invalid transaction is rolled back.  Please rollback() fully before proceeding (Background on this error at: https://sqlalche.me/e/20/8s2b)
+2025-06-15 21:07:10,306 - INFO - [main] - OHLC fetch complete.
+2025-06-15 21:07:10,306 - ERROR - [main] - Error in combined loop: Failed to fetch recent OHLC data: Can't reconnect until invalid transaction is rolled back.  Please rollback() fully before proceeding (Background on this error at: https://sqlalche.me/e/20/8s2b)
+Traceback (most recent call last):
+  File "c:\Users\fadyz\Desktop\Personal\python-mess\Trading_Bod_Production\Core_Trade\Fetch_fromDB_OHLC.py", line 34, in get_OHLC_fromDB
+    self.trade_history = pd.read_sql(query, self.engine)
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\fadyz\Desktop\Personal\python-mess\Trading_Bod_Production\.Trading_Bod_Production\Lib\site-packages\pandas\io\sql.py", line 736, in read_sql
+    return pandas_sql.read_query(
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\fadyz\Desktop\Personal\python-mess\Trading_Bod_Production\.Trading_Bod_Production\Lib\site-packages\pandas\io\sql.py", line 1848, in read_query
+    result = self.execute(sql, params)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\fadyz\Desktop\Personal\python-mess\Trading_Bod_Production\.Trading_Bod_Production\Lib\site-packages\pandas\io\sql.py", line 1671, in execute
+    return self.con.exec_driver_sql(sql, *args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\fadyz\Desktop\Personal\python-mess\Trading_Bod_Production\.Trading_Bod_Production\Lib\site-packages\sqlalchemy\engine\base.py", line 1775, in exec_driver_sql
+    ret = self._execute_context(
+          ^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\fadyz\Desktop\Personal\python-mess\Trading_Bod_Production\.Trading_Bod_Production\Lib\site-packages\sqlalchemy\engine\base.py", line 1809, in _execute_context
+    conn = self._revalidate_connection()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\fadyz\Desktop\Personal\python-mess\Trading_Bod_Production\.Trading_Bod_Production\Lib\site-packages\sqlalchemy\engine\base.py", line 675, in _revalidate_connection
+    self._invalid_transaction()
+  File "C:\Users\fadyz\Desktop\Personal\python-mess\Trading_Bod_Production\.Trading_Bod_Production\Lib\site-packages\sqlalchemy\engine\base.py", line 665, in _invalid_transaction
+    raise exc.PendingRollbackError(
+sqlalchemy.exc.PendingRollbackError: Can't reconnect until invalid transaction is rolled back.  Please rollback() fully before proceeding (Background on this error at: https://sqlalche.me/e/20/8s2b)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "c:\Users\fadyz\Desktop\Personal\python-mess\Trading_Bod_Production\main.py", line 118, in main
+    raw_data = db_fetcher.get_OHLC_fromDB(symbol='BTC/USDT', interval='5m', since_hour=6)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\fadyz\Desktop\Personal\python-mess\Trading_Bod_Production\Core_Trade\Fetch_fromDB_OHLC.py", line 40, in get_OHLC_fromDB
+    raise RuntimeError(f"Failed to fetch recent OHLC data: {e}")
+RuntimeError: Failed to fetch recent OHLC data: Can't reconnect until invalid transaction is rolled back.  Please rollback() fully before proceeding (Background on this error at: https://sqlalche.me/e/20/8s2b)
+2025-06-15 21:07:10,316 - INFO - [main] - Next run scheduled at 2025-06-15 19:12:10+00:00 UTC. Waiting 299.68 seconds.
+2025-06-15 21:12:10,001 - INFO - [main] - Starting 5m OHLC fetch and load.
+2025-06-15 21:12:10,472 - INFO - [Fetch_Online_OHLC] - Table trade_btcusdt5m_ohlc does not exist. Creating Table and Schema if not exist...
+2025-06-15 21:12:10,603 - INFO - [Create_DatabaseSchema] - Creating schema 'trade' if it doesn't exist...
+2025-06-15 21:12:10,650 - INFO - [Create_DatabaseSchema] - Creating base partitioned table 'trade.trade_btcusdt5m_ohlc'...
+2025-06-15 21:12:10,720 - INFO - [Create_DatabaseSchema] - Table 'trade.trade_btcusdt5m_ohlc' and index 'idx_trade_btcusdt5m_ohlc_date' created successfully.
+2025-06-15 21:12:10,721 - INFO - [Fetch_Online_OHLC] - Inserting 1 OHLC records into trade_btcusdt5m_ohlc...
+2025-06-15 21:12:10,802 - INFO - [main] - OHLC fetch complete.
+2025-06-15 21:12:11,062 - INFO - [main] - Evaluating trade logic for 2025-06-15 19:05:00+00:00
+2025-06-15 21:12:11,062 - INFO - [main] - Next run scheduled at 2025-06-15 19:17:10+00:00 UTC. Waiting 298.94 seconds.
+2025-06-15 21:17:10,000 - INFO - [main] - Starting 5m OHLC fetch and load.
+2025-06-15 21:17:10,307 - INFO - [Fetch_Online_OHLC] - Table trade_btcusdt5m_ohlc does not exist. Creating Table and Schema if not exist...
+2025-06-15 21:17:10,308 - INFO - [Create_DatabaseSchema] - Creating schema 'trade' if it doesn't exist...
+2025-06-15 21:17:10,357 - INFO - [Create_DatabaseSchema] - Creating base partitioned table 'trade.trade_btcusdt5m_ohlc'...
+2025-06-15 21:17:10,407 - INFO - [Create_DatabaseSchema] - Table 'trade.trade_btcusdt5m_ohlc' and index 'idx_trade_btcusdt5m_ohlc_date' created successfully.
+2025-06-15 21:17:10,407 - INFO - [Fetch_Online_OHLC] - Inserting 1 OHLC records into trade_btcusdt5m_ohlc...
+2025-06-15 21:17:10,470 - INFO - [main] - OHLC fetch complete.
+2025-06-15 21:17:10,541 - INFO - [main] - Evaluating trade logic for 2025-06-15 19:10:00+00:00
+2025-06-15 21:17:10,541 - INFO - [main] - Next run scheduled at 2025-06-15 19:22:10+00:00 UTC. Waiting 299.46 seconds.
+2025-06-15 21:22:10,000 - INFO - [main] - Starting 5m OHLC fetch and load.
+2025-06-15 21:22:10,325 - INFO - [Fetch_Online_OHLC] - Table trade_btcusdt5m_ohlc does not exist. Creating Table and Schema if not exist...
+2025-06-15 21:22:10,326 - INFO - [Create_DatabaseSchema] - Creating schema 'trade' if it doesn't exist...
+2025-06-15 21:22:10,362 - INFO - [Create_DatabaseSchema] - Creating base partitioned table 'trade.trade_btcusdt5m_ohlc'...
+2025-06-15 21:22:10,424 - INFO - [Create_DatabaseSchema] - Table 'trade.trade_btcusdt5m_ohlc' and index 'idx_trade_btcusdt5m_ohlc_date' created successfully.
+2025-06-15 21:22:10,424 - INFO - [Fetch_Online_OHLC] - Inserting 1 OHLC records into trade_btcusdt5m_ohlc...
+2025-06-15 21:22:10,484 - INFO - [main] - OHLC fetch complete.
+2025-06-15 21:22:10,563 - INFO - [main] - Evaluating trade logic for 2025-06-15 19:15:00+00:00
+2025-06-15 21:22:10,563 - INFO - [main] - Next run scheduled at 2025-06-15 19:27:10+00:00 UTC. Waiting 299.44 seconds.
+2025-06-15 21:27:10,001 - INFO - [main] - Starting 5m OHLC fetch and load.
+2025-06-15 21:27:10,299 - INFO - [Fetch_Online_OHLC] - Table trade_btcusdt5m_ohlc does not exist. Creating Table and Schema if not exist...
+2025-06-15 21:27:10,299 - INFO - [Create_DatabaseSchema] - Creating schema 'trade' if it doesn't exist...
+2025-06-15 21:27:10,341 - INFO - [Create_DatabaseSchema] - Creating base partitioned table 'trade.trade_btcusdt5m_ohlc'...
+2025-06-15 21:27:10,408 - INFO - [Create_DatabaseSchema] - Table 'trade.trade_btcusdt5m_ohlc' and index 'idx_trade_btcusdt5m_ohlc_date' created successfully.
+2025-06-15 21:27:10,408 - INFO - [Fetch_Online_OHLC] - Inserting 1 OHLC records into trade_btcusdt5m_ohlc...
+2025-06-15 21:27:10,478 - INFO - [main] - OHLC fetch complete.
+2025-06-15 21:27:10,563 - INFO - [main] - Evaluating trade logic for 2025-06-15 19:20:00+00:00
+2025-06-15 21:27:10,564 - INFO - [main] - Next run scheduled at 2025-06-15 19:32:10+00:00 UTC. Waiting 299.44 seconds.
+2025-06-15 21:32:10,000 - INFO - [main] - Starting 5m OHLC fetch and load.
+2025-06-15 21:32:10,318 - INFO - [Fetch_Online_OHLC] - Table trade_btcusdt5m_ohlc does not exist. Creating Table and Schema if not exist...
+2025-06-15 21:32:10,318 - INFO - [Create_DatabaseSchema] - Creating schema 'trade' if it doesn't exist...
+2025-06-15 21:32:10,364 - INFO - [Create_DatabaseSchema] - Creating base partitioned table 'trade.trade_btcusdt5m_ohlc'...
+2025-06-15 21:32:10,411 - INFO - [Create_DatabaseSchema] - Table 'trade.trade_btcusdt5m_ohlc' and index 'idx_trade_btcusdt5m_ohlc_date' created successfully.
+2025-06-15 21:32:10,411 - INFO - [Fetch_Online_OHLC] - Inserting 1 OHLC records into trade_btcusdt5m_ohlc...
+2025-06-15 21:32:10,477 - INFO - [main] - OHLC fetch complete.
+2025-06-15 21:32:10,551 - INFO - [main] - Evaluating trade logic for 2025-06-15 19:25:00+00:00
+2025-06-15 21:32:10,551 - INFO - [main] - Next run scheduled at 2025-06-15 19:37:10+00:00 UTC. Waiting 299.45 seconds.
+2025-06-15 21:37:10,004 - INFO - [main] - Starting 5m OHLC fetch and load.
+2025-06-15 21:37:10,321 - INFO - [Fetch_Online_OHLC] - Table trade_btcusdt5m_ohlc does not exist. Creating Table and Schema if not exist...
+2025-06-15 21:37:10,321 - INFO - [Create_DatabaseSchema] - Creating schema 'trade' if it doesn't exist...
+2025-06-15 21:37:10,371 - INFO - [Create_DatabaseSchema] - Creating base partitioned table 'trade.trade_btcusdt5m_ohlc'...
+2025-06-15 21:37:10,427 - INFO - [Create_DatabaseSchema] - Table 'trade.trade_btcusdt5m_ohlc' and index 'idx_trade_btcusdt5m_ohlc_date' created successfully.
+2025-06-15 21:37:10,427 - INFO - [Fetch_Online_OHLC] - Inserting 1 OHLC records into trade_btcusdt5m_ohlc...
+2025-06-15 21:37:10,502 - INFO - [main] - OHLC fetch complete.
+2025-06-15 21:37:10,578 - INFO - [main] - Evaluating trade logic for 2025-06-15 19:30:00+00:00
+2025-06-15 21:37:10,578 - INFO - [main] - Next run scheduled at 2025-06-15 19:42:10+00:00 UTC. Waiting 299.42 seconds.
+2025-06-15 21:42:10,000 - INFO - [main] - Starting 5m OHLC fetch and load.
+2025-06-15 21:42:10,297 - INFO - [Fetch_Online_OHLC] - Table trade_btcusdt5m_ohlc does not exist. Creating Table and Schema if not exist...
+2025-06-15 21:42:10,297 - INFO - [Create_DatabaseSchema] - Creating schema 'trade' if it doesn't exist...
+2025-06-15 21:42:10,340 - INFO - [Create_DatabaseSchema] - Creating base partitioned table 'trade.trade_btcusdt5m_ohlc'...
+2025-06-15 21:42:10,389 - INFO - [Create_DatabaseSchema] - Table 'trade.trade_btcusdt5m_ohlc' and index 'idx_trade_btcusdt5m_ohlc_date' created successfully.
+2025-06-15 21:42:10,389 - INFO - [Fetch_Online_OHLC] - Inserting 1 OHLC records into trade_btcusdt5m_ohlc...
+2025-06-15 21:42:10,456 - INFO - [main] - OHLC fetch complete.
+2025-06-15 21:42:10,526 - INFO - [main] - Evaluating trade logic for 2025-06-15 19:35:00+00:00
+2025-06-15 21:42:10,526 - INFO - [main] - Next run scheduled at 2025-06-15 19:47:10+00:00 UTC. Waiting 299.47 seconds.
+2025-06-15 21:47:10,001 - INFO - [main] - Starting 5m OHLC fetch and load.
+2025-06-15 21:47:10,313 - INFO - [Fetch_Online_OHLC] - Table trade_btcusdt5m_ohlc does not exist. Creating Table and Schema if not exist...
+2025-06-15 21:47:10,313 - INFO - [Create_DatabaseSchema] - Creating schema 'trade' if it doesn't exist...
+2025-06-15 21:47:10,358 - INFO - [Create_DatabaseSchema] - Creating base partitioned table 'trade.trade_btcusdt5m_ohlc'...
+2025-06-15 21:47:10,416 - INFO - [Create_DatabaseSchema] - Table 'trade.trade_btcusdt5m_ohlc' and index 'idx_trade_btcusdt5m_ohlc_date' created successfully.
+2025-06-15 21:47:10,416 - INFO - [Fetch_Online_OHLC] - Inserting 1 OHLC records into trade_btcusdt5m_ohlc...
+2025-06-15 21:47:10,489 - INFO - [main] - OHLC fetch complete.
+2025-06-15 21:47:10,557 - INFO - [main] - Evaluating trade logic for 2025-06-15 19:40:00+00:00
+2025-06-15 21:47:10,558 - INFO - [main] - Next run scheduled at 2025-06-15 19:52:10+00:00 UTC. Waiting 299.44 seconds.
+2025-06-15 21:52:10,000 - INFO - [main] - Starting 5m OHLC fetch and load.
+2025-06-15 21:52:10,306 - INFO - [Fetch_Online_OHLC] - Table trade_btcusdt5m_ohlc does not exist. Creating Table and Schema if not exist...
+2025-06-15 21:52:10,306 - INFO - [Create_DatabaseSchema] - Creating schema 'trade' if it doesn't exist...
+2025-06-15 21:52:31,898 - ERROR - [Fetch_Online_OHLC] - Could not verify wheter table exist or no for Details:: (psycopg2.OperationalError) server closed the connection unexpectedly
+	This probably means the server terminated abnormally
+	before or while processing the request.
+server closed the connection unexpectedly
+	This probably means the server terminated abnormally
+	before or while processing the request.
+
+[SQL: CREATE SCHEMA IF NOT EXISTS trade]
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+2025-06-15 21:52:31,898 - INFO - [Fetch_Online_OHLC] - Inserting 1 OHLC records into trade_btcusdt5m_ohlc...
+2025-06-15 21:52:51,084 - ERROR - [Fetch_Online_OHLC] - Unexpected error inserting data: Can't reconnect until invalid transaction is rolled back.  Please rollback() fully before proceeding (Background on this error at: https://sqlalche.me/e/20/8s2b)
+2025-06-15 21:52:51,085 - INFO - [main] - OHLC fetch complete.
+2025-06-15 21:53:10,259 - ERROR - [main] - Error in combined loop: Failed to fetch recent OHLC data: Can't reconnect until invalid transaction is rolled back.  Please rollback() fully before proceeding (Background on this error at: https://sqlalche.me/e/20/8s2b)
+Traceback (most recent call last):
+  File "c:\Users\fadyz\Desktop\Personal\python-mess\Trading_Bod_Production\Core_Trade\Fetch_fromDB_OHLC.py", line 34, in get_OHLC_fromDB
+    self.trade_history = pd.read_sql(query, self.engine)
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\fadyz\Desktop\Personal\python-mess\Trading_Bod_Production\.Trading_Bod_Production\Lib\site-packages\pandas\io\sql.py", line 736, in read_sql
+    return pandas_sql.read_query(
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\fadyz\Desktop\Personal\python-mess\Trading_Bod_Production\.Trading_Bod_Production\Lib\site-packages\pandas\io\sql.py", line 1848, in read_query
+    result = self.execute(sql, params)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\fadyz\Desktop\Personal\python-mess\Trading_Bod_Production\.Trading_Bod_Production\Lib\site-packages\pandas\io\sql.py", line 1671, in execute
+    return self.con.exec_driver_sql(sql, *args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\fadyz\Desktop\Personal\python-mess\Trading_Bod_Production\.Trading_Bod_Production\Lib\site-packages\sqlalchemy\engine\base.py", line 1775, in exec_driver_sql
+    ret = self._execute_context(
+          ^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\fadyz\Desktop\Personal\python-mess\Trading_Bod_Production\.Trading_Bod_Production\Lib\site-packages\sqlalchemy\engine\base.py", line 1809, in _execute_context
+    conn = self._revalidate_connection()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\fadyz\Desktop\Personal\python-mess\Trading_Bod_Production\.Trading_Bod_Production\Lib\site-packages\sqlalchemy\engine\base.py", line 675, in _revalidate_connection
+    self._invalid_transaction()
+  File "C:\Users\fadyz\Desktop\Personal\python-mess\Trading_Bod_Production\.Trading_Bod_Production\Lib\site-packages\sqlalchemy\engine\base.py", line 665, in _invalid_transaction
+    raise exc.PendingRollbackError(
+sqlalchemy.exc.PendingRollbackError: Can't reconnect until invalid transaction is rolled back.  Please rollback() fully before proceeding (Background on this error at: https://sqlalche.me/e/20/8s2b)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "c:\Users\fadyz\Desktop\Personal\python-mess\Trading_Bod_Production\main.py", line 118, in main
+    raw_data = db_fetcher.get_OHLC_fromDB(symbol='BTC/USDT', interval='5m', since_hour=6)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\fadyz\Desktop\Personal\python-mess\Trading_Bod_Production\Core_Trade\Fetch_fromDB_OHLC.py", line 40, in get_OHLC_fromDB
+    raise RuntimeError(f"Failed to fetch recent OHLC data: {e}")
+RuntimeError: Failed to fetch recent OHLC data: Can't reconnect until invalid transaction is rolled back.  Please rollback() fully before proceeding (Background on this error at: https://sqlalche.me/e/20/8s2b)
+2025-06-15 21:53:10,263 - INFO - [main] - Next run scheduled at 2025-06-15 19:58:10+00:00 UTC. Waiting 299.74 seconds.
+2025-06-15 21:58:10,000 - INFO - [main] - Starting 5m OHLC fetch and load.
+2025-06-15 21:58:10,327 - ERROR - [Fetch_Online_OHLC] - Could not verify wheter table exist or no for Details:: (psycopg2.OperationalError) could not translate host name "trade-database-dummy.c5e2y0s0keyv.eu-central-1.rds.amazonaws.com" to address: No such host is known. 
+
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+2025-06-15 21:58:10,331 - INFO - [Fetch_Online_OHLC] - Inserting 1 OHLC records into trade_btcusdt5m_ohlc...
+2025-06-15 21:58:10,332 - ERROR - [Fetch_Online_OHLC] - Unexpected error inserting data: (psycopg2.OperationalError) could not translate host name "trade-database-dummy.c5e2y0s0keyv.eu-central-1.rds.amazonaws.com" to address: No such host is known. 
+
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+2025-06-15 21:58:10,332 - INFO - [main] - OHLC fetch complete.
+2025-06-15 21:58:10,333 - ERROR - [main] - Error in combined loop: Failed to fetch recent OHLC data: (psycopg2.OperationalError) could not translate host name "trade-database-dummy.c5e2y0s0keyv.eu-central-1.rds.amazonaws.com" to address: No such host is known. 
+
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+Traceback (most recent call last):
+  File "C:\Users\fadyz\Desktop\Personal\python-mess\Trading_Bod_Production\.Trading_Bod_Production\Lib\site-packages\sqlalchemy\engine\base.py", line 145, in __init__
+    self._dbapi_connection = engine.raw_connection()
+                             ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\fadyz\Desktop\Personal\python-mess\Trading_Bod_Production\.Trading_Bod_Production\Lib\site-packages\sqlalchemy\engine\base.py", line 3297, in raw_connection
+    return self.pool.connect()
+           ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\fadyz\Desktop\Personal\python-mess\Trading_Bod_Production\.Trading_Bod_Production\Lib\site-packages\sqlalchemy\pool\base.py", line 449, in connect
+    return _ConnectionFairy._checkout(self)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\fadyz\Desktop\Personal\python-mess\Trading_Bod_Production\.Trading_Bod_Production\Lib\site-packages\sqlalchemy\pool\base.py", line 1264, in _checkout
+    fairy = _ConnectionRecord.checkout(pool)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\fadyz\Desktop\Personal\python-mess\Trading_Bod_Production\.Trading_Bod_Production\Lib\site-packages\sqlalchemy\pool\base.py", line 718, in checkout
+    with util.safe_reraise():
+  File "C:\Users\fadyz\Desktop\Personal\python-mess\Trading_Bod_Production\.Trading_Bod_Production\Lib\site-packages\sqlalchemy\util\langhelpers.py", line 224, in __exit__
+    raise exc_value.with_traceback(exc_tb)
+  File "C:\Users\fadyz\Desktop\Personal\python-mess\Trading_Bod_Production\.Trading_Bod_Production\Lib\site-packages\sqlalchemy\pool\base.py", line 716, in checkout
+    dbapi_connection = rec.get_connection()
+                       ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\fadyz\Desktop\Personal\python-mess\Trading_Bod_Production\.Trading_Bod_Production\Lib\site-packages\sqlalchemy\pool\base.py", line 838, in get_connection
+    self.__connect()
+  File "C:\Users\fadyz\Desktop\Personal\python-mess\Trading_Bod_Production\.Trading_Bod_Production\Lib\site-packages\sqlalchemy\pool\base.py", line 901, in __connect
+    with util.safe_reraise():
+  File "C:\Users\fadyz\Desktop\Personal\python-mess\Trading_Bod_Production\.Trading_Bod_Production\Lib\site-packages\sqlalchemy\util\langhelpers.py", line 224, in __exit__
+    raise exc_value.with_traceback(exc_tb)
+  File "C:\Users\fadyz\Desktop\Personal\python-mess\Trading_Bod_Production\.Trading_Bod_Production\Lib\site-packages\sqlalchemy\pool\base.py", line 897, in __connect
+    self.dbapi_connection = connection = pool._invoke_creator(self)
+                                         ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\fadyz\Desktop\Personal\python-mess\Trading_Bod_Production\.Trading_Bod_Production\Lib\site-packages\sqlalchemy\engine\create.py", line 646, in connect
+    return dialect.connect(*cargs, **cparams)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\fadyz\Desktop\Personal\python-mess\Trading_Bod_Production\.Trading_Bod_Production\Lib\site-packages\sqlalchemy\engine\default.py", line 625, in connect
+    return self.loaded_dbapi.connect(*cargs, **cparams)  # type: ignore[no-any-return]  # NOQA: E501
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\fadyz\Desktop\Personal\python-mess\Trading_Bod_Production\.Trading_Bod_Production\Lib\site-packages\psycopg2\__init__.py", line 122, in connect
+    conn = _connect(dsn, connection_factory=connection_factory, **kwasync)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+psycopg2.OperationalError: could not translate host name "trade-database-dummy.c5e2y0s0keyv.eu-central-1.rds.amazonaws.com" to address: No such host is known. 
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "c:\Users\fadyz\Desktop\Personal\python-mess\Trading_Bod_Production\Core_Trade\Fetch_fromDB_OHLC.py", line 34, in get_OHLC_fromDB
+    self.trade_history = pd.read_sql(query, self.engine)
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\fadyz\Desktop\Personal\python-mess\Trading_Bod_Production\.Trading_Bod_Production\Lib\site-packages\pandas\io\sql.py", line 706, in read_sql
+    with pandasSQL_builder(con) as pandas_sql:
+         ^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\fadyz\Desktop\Personal\python-mess\Trading_Bod_Production\.Trading_Bod_Production\Lib\site-packages\pandas\io\sql.py", line 908, in pandasSQL_builder
+    return SQLDatabase(con, schema, need_transaction)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\fadyz\Desktop\Personal\python-mess\Trading_Bod_Production\.Trading_Bod_Production\Lib\site-packages\pandas\io\sql.py", line 1648, in __init__
+    con = self.exit_stack.enter_context(con.connect())
+                                        ^^^^^^^^^^^^^
+  File "C:\Users\fadyz\Desktop\Personal\python-mess\Trading_Bod_Production\.Trading_Bod_Production\Lib\site-packages\sqlalchemy\engine\base.py", line 3273, in connect
+    return self._connection_cls(self)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\fadyz\Desktop\Personal\python-mess\Trading_Bod_Production\.Trading_Bod_Production\Lib\site-packages\sqlalchemy\engine\base.py", line 147, in __init__
+    Connection._handle_dbapi_exception_noconnection(
+  File "C:\Users\fadyz\Desktop\Personal\python-mess\Trading_Bod_Production\.Trading_Bod_Production\Lib\site-packages\sqlalchemy\engine\base.py", line 2436, in _handle_dbapi_exception_noconnection
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "C:\Users\fadyz\Desktop\Personal\python-mess\Trading_Bod_Production\.Trading_Bod_Production\Lib\site-packages\sqlalchemy\engine\base.py", line 145, in __init__
+    self._dbapi_connection = engine.raw_connection()
+                             ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\fadyz\Desktop\Personal\python-mess\Trading_Bod_Production\.Trading_Bod_Production\Lib\site-packages\sqlalchemy\engine\base.py", line 3297, in raw_connection
+    return self.pool.connect()
+           ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\fadyz\Desktop\Personal\python-mess\Trading_Bod_Production\.Trading_Bod_Production\Lib\site-packages\sqlalchemy\pool\base.py", line 449, in connect
+    return _ConnectionFairy._checkout(self)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\fadyz\Desktop\Personal\python-mess\Trading_Bod_Production\.Trading_Bod_Production\Lib\site-packages\sqlalchemy\pool\base.py", line 1264, in _checkout
+    fairy = _ConnectionRecord.checkout(pool)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\fadyz\Desktop\Personal\python-mess\Trading_Bod_Production\.Trading_Bod_Production\Lib\site-packages\sqlalchemy\pool\base.py", line 718, in checkout
+    with util.safe_reraise():
+  File "C:\Users\fadyz\Desktop\Personal\python-mess\Trading_Bod_Production\.Trading_Bod_Production\Lib\site-packages\sqlalchemy\util\langhelpers.py", line 224, in __exit__
+    raise exc_value.with_traceback(exc_tb)
+  File "C:\Users\fadyz\Desktop\Personal\python-mess\Trading_Bod_Production\.Trading_Bod_Production\Lib\site-packages\sqlalchemy\pool\base.py", line 716, in checkout
+    dbapi_connection = rec.get_connection()
+                       ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\fadyz\Desktop\Personal\python-mess\Trading_Bod_Production\.Trading_Bod_Production\Lib\site-packages\sqlalchemy\pool\base.py", line 838, in get_connection
+    self.__connect()
+  File "C:\Users\fadyz\Desktop\Personal\python-mess\Trading_Bod_Production\.Trading_Bod_Production\Lib\site-packages\sqlalchemy\pool\base.py", line 901, in __connect
+    with util.safe_reraise():
+  File "C:\Users\fadyz\Desktop\Personal\python-mess\Trading_Bod_Production\.Trading_Bod_Production\Lib\site-packages\sqlalchemy\util\langhelpers.py", line 224, in __exit__
+    raise exc_value.with_traceback(exc_tb)
+  File "C:\Users\fadyz\Desktop\Personal\python-mess\Trading_Bod_Production\.Trading_Bod_Production\Lib\site-packages\sqlalchemy\pool\base.py", line 897, in __connect
+    self.dbapi_connection = connection = pool._invoke_creator(self)
+                                         ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\fadyz\Desktop\Personal\python-mess\Trading_Bod_Production\.Trading_Bod_Production\Lib\site-packages\sqlalchemy\engine\create.py", line 646, in connect
+    return dialect.connect(*cargs, **cparams)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\fadyz\Desktop\Personal\python-mess\Trading_Bod_Production\.Trading_Bod_Production\Lib\site-packages\sqlalchemy\engine\default.py", line 625, in connect
+    return self.loaded_dbapi.connect(*cargs, **cparams)  # type: ignore[no-any-return]  # NOQA: E501
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\fadyz\Desktop\Personal\python-mess\Trading_Bod_Production\.Trading_Bod_Production\Lib\site-packages\psycopg2\__init__.py", line 122, in connect
+    conn = _connect(dsn, connection_factory=connection_factory, **kwasync)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+sqlalchemy.exc.OperationalError: (psycopg2.OperationalError) could not translate host name "trade-database-dummy.c5e2y0s0keyv.eu-central-1.rds.amazonaws.com" to address: No such host is known. 
+
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "c:\Users\fadyz\Desktop\Personal\python-mess\Trading_Bod_Production\main.py", line 118, in main
+    raw_data = db_fetcher.get_OHLC_fromDB(symbol='BTC/USDT', interval='5m', since_hour=6)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\fadyz\Desktop\Personal\python-mess\Trading_Bod_Production\Core_Trade\Fetch_fromDB_OHLC.py", line 40, in get_OHLC_fromDB
+    raise RuntimeError(f"Failed to fetch recent OHLC data: {e}")
+RuntimeError: Failed to fetch recent OHLC data: (psycopg2.OperationalError) could not translate host name "trade-database-dummy.c5e2y0s0keyv.eu-central-1.rds.amazonaws.com" to address: No such host is known. 
+
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+2025-06-15 21:58:10,359 - INFO - [main] - Next run scheduled at 2025-06-15 20:03:10+00:00 UTC. Waiting 299.64 seconds.

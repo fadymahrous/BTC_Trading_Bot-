@@ -1,0 +1,159 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Description: Minimal-cost RHEL EC2 (t3.micro) and PostgreSQL RDS (db.t3.micro) in private setup
+
+
+Resources:
+
+  # VPC and Networking
+  TradeVPC:
+    Type: AWS::EC2::VPC
+    Properties:
+      CidrBlock: 10.0.0.0/16
+      EnableDnsSupport: true
+      EnableDnsHostnames: true
+      Tags:
+        - Key: Name
+          Value: {vpc_name}
+
+  TradePublicSubnetA:
+    Type: AWS::EC2::Subnet
+    Properties:
+      VpcId: !Ref TradeVPC
+      CidrBlock: 10.0.1.0/24
+      MapPublicIpOnLaunch: true
+      AvailabilityZone: !Select [0, !GetAZs ""]
+      Tags:
+        - Key: Name
+          Value: Trade-subnetA
+      
+  TradePublicSubnetB:
+    Type: AWS::EC2::Subnet
+    Properties:
+      VpcId: !Ref TradeVPC
+      CidrBlock: 10.0.2.0/24
+      MapPublicIpOnLaunch: true
+      AvailabilityZone: !Select [1, !GetAZs ""]
+      Tags:
+        - Key: Name
+          Value: Trade-subnetB
+
+  InternetGateway:
+    Type: AWS::EC2::InternetGateway
+    Properties:
+      Tags:
+        - Key: Name
+          Value: Trade-Gateway
+
+  AttachGateway:
+    Type: AWS::EC2::VPCGatewayAttachment
+    Properties:
+      VpcId: !Ref TradeVPC
+      InternetGatewayId: !Ref InternetGateway
+
+  RouteTable:
+    Type: AWS::EC2::RouteTable
+    Properties:
+      VpcId: !Ref TradeVPC
+
+  Route:
+    Type: AWS::EC2::Route
+    DependsOn: AttachGateway
+    Properties:
+      RouteTableId: !Ref RouteTable
+      DestinationCidrBlock: 0.0.0.0/0
+      GatewayId: !Ref InternetGateway
+
+  RouteTableAssociationA:
+    Type: AWS::EC2::SubnetRouteTableAssociation
+    Properties:
+      SubnetId: !Ref TradePublicSubnetA
+      RouteTableId: !Ref RouteTable
+
+  RouteTableAssociationB:
+    Type: AWS::EC2::SubnetRouteTableAssociation
+    Properties:
+      SubnetId: !Ref TradePublicSubnetB
+      RouteTableId: !Ref RouteTable
+
+  # Security Groups
+  EC2SecurityGroup:
+    Type: AWS::EC2::SecurityGroup
+    Properties:
+      GroupDescription: Allow SSH access to EC2
+      VpcId: !Ref TradeVPC
+      SecurityGroupIngress:
+        - IpProtocol: tcp
+          FromPort: 22
+          ToPort: 22
+          CidrIp: 0.0.0.0/0
+
+  TradeRDSSecurityGroup:
+    Type: AWS::EC2::SecurityGroup
+    Properties:
+      GroupDescription: Allow PostgreSQL access only from EC2
+      VpcId: !Ref TradeVPC
+      SecurityGroupIngress:
+        - IpProtocol: tcp
+          FromPort: 5432
+          ToPort: 5432
+          SourceSecurityGroupId: !Ref EC2SecurityGroup
+
+  # EC2 Instance (RHEL)
+  TradeEC2Instance:
+    DeletionPolicy: Delete
+    Type: AWS::EC2::Instance
+    Properties:
+      InstanceType: t3.small
+      KeyName: {rsa_key_name}
+      SubnetId: !Ref TradePublicSubnetA
+      ImageId: {linux_image}
+      SecurityGroupIds:
+        - !Ref EC2SecurityGroup
+      BlockDeviceMappings:
+        - DeviceName: /dev/xvda
+          Ebs:
+            VolumeSize: 8
+            VolumeType: gp3
+            DeleteOnTermination: true
+      Tags:
+        - Key: Name
+          Value: {ec2_instance_name}
+
+  # Subnet group for RDS
+  TradeDBSubnetGroup:
+    Type: AWS::RDS::DBSubnetGroup
+    Properties:
+      DBSubnetGroupDescription: Subnet group for RDS with 2 AZs
+      SubnetIds:
+        - !Ref TradePublicSubnetA
+        - !Ref TradePublicSubnetB
+
+  # PostgreSQL RDS Instance
+  TradeRDSInstance:
+    Type: AWS::RDS::DBInstance
+    DeletionPolicy: Delete
+    Properties:
+      DBInstanceIdentifier: {dbinstanceidentifier}
+      DBName: {dbname}
+      Engine: postgres
+      EngineVersion: {engine_version}
+      MasterUsername: {masterusername}
+      MasterUserPassword: {masteruserpassword}
+      DBInstanceClass: db.t4g.micro
+      AllocatedStorage: 20
+      StorageType: gp2
+      PubliclyAccessible: true
+      VPCSecurityGroups:
+        - !Ref TradeRDSSecurityGroup
+      DBSubnetGroupName: !Ref TradeDBSubnetGroup
+      MultiAZ: false
+      DeletionProtection: false
+
+Outputs:
+  EC2PublicIP:
+    Description: Public IP of your RHEL EC2 instance (for SSH)
+    Value: !GetAtt TradeEC2Instance.PublicIp
+
+  RDSEndpoint:
+    Description: RDS Endpoint (accessible only from EC2)
+    Value: !GetAtt TradeRDSInstance.Endpoint.Address
