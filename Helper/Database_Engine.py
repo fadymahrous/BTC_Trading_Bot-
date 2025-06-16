@@ -12,10 +12,19 @@ class DatabaseEngine:
         self.logger = logging.getLogger('combined_OHLC_trade')
 
         # Load configuration
+        if not path.exists(config_path):
+            self.logger.error(f"Configuration file not found at '{config_path}'. Please make sure it exists.")
+            raise FileNotFoundError(f"Configuration file not found at '{config_path}'.")
+
         try:
             config = configparser.ConfigParser()
             config.optionxform = str  # preserve case
-            config.read(path.join(config_path))
+            config.read(config_path)
+
+            if 'AWS_General' not in config:
+                self.logger.error("Missing 'AWS_General' section in config.ini.")
+                raise KeyError("Missing 'AWS_General' section in config.ini.")
+
             self.db_config = AWSConfig(**dict(config['AWS_General']))
             self.logger.info("Database configuration loaded successfully.")
         except Exception as e:
