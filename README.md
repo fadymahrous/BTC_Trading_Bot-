@@ -65,6 +65,8 @@ this setup is just for showcasing code structure and deployment flow.
 ---
 
 ## 🚀 Usage
+⚠️ Before starting:
+Make sure to fill in the config.ini file under the Config directory with the correct settings. This file is required for both trading and infrastructure provisioning.
 
 ### ▶️ Run the trading bot with Docker
 

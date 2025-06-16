@@ -11,10 +11,18 @@ TEMPLATE_FILE_PATH = path.join('Infrastructure', 'CloudFormation_files', 'EC2_RD
 
 class Create_AWS_Environment:
     def __init__(self):
-        # Load config.ini
-        config = configparser.ConfigParser()
-        config.read(path.join('Config', 'config.ini'))
+        # Start logger path
         self.logger=logging.getLogger('infrastructure_log')
+
+        # Load config.ini
+        config_path = path.join('Config', 'config.ini')
+
+        if not path.exists(config_path):
+            self.logger.error(f"Configuration file not found at '{config_path}'. Please create and fill it before running this script.")
+            raise FileNotFoundError(f"Configuration file not found at '{config_path}'. Please create and fill it before running this script.")
+
+        config = configparser.ConfigParser()
+        config.read(config_path)
         try:
             configuration_dict=dict(config['AWS_General'])
             self.aws_configuration = AWSConfig(**configuration_dict)
