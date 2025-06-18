@@ -71,8 +71,11 @@ Make sure to fill in the config.ini file under the Config directory with the cor
 ### ▶️ Run the trading bot with Docker
 
 ```bash
-docker build -t ohlc-trade-bot .
-docker run -it -e db_endpoint=your-db-endpoint-here ohlc-trade-bot
+docker build -t trade-bot .
+docker save -o trade-bot.tar trade-bot:latest
+
+sudo docker load -i trade-bot.tar
+sudo docker run -it -e db_endpoint="trade-database.c5e2y0s0keyv.eu-central-1.rds.amazonaws.com" -d trade-bot
 ```
 
 ### 🛠️ Run AWS infrastructure provisioning

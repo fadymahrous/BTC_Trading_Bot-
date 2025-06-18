@@ -5,7 +5,6 @@ from Helper.AWS_And_DB_Config_Schema import AWSConfig
 import configparser
 import logging
 import botocore.exceptions
-from time import sleep
 
 TEMPLATE_FILE_PATH = path.join('Infrastructure', 'CloudFormation_files', 'EC2_RDS_full_Infrastructure.yml')
 
@@ -94,7 +93,7 @@ class Create_AWS_Environment:
             self.logger.error(f"Failed to retrieve stack status for '{stack_name}'. Details: {e}")
             return ('ERROR', str(e))
 
-    def get_rollback_root_cause(self):
+    def get_rollback_root_cause(self)->None:
         """
         Retrieves the rollback root cause from failed CloudFormation stack events.
         Returns 'CLEAN' if no failed events are found.
@@ -119,7 +118,7 @@ class Create_AWS_Environment:
 
             errors='|'.join(errors)
             self.logger.warning(f"Returning all failure with pipe seperated, Details:{errors}")
-            return errors
+            return None
 
         except botocore.exceptions.ClientError as e:
             self.logger.error(f"Failed to fetch stack events for '{stack_name}': {e}")

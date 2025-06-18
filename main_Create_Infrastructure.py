@@ -26,6 +26,7 @@ def main():
                 break
             elif status == 'ROLLBACK_COMPLETE':
                 logger.error("Stack creation failed. Deleting stack...")
+                aws_env.get_rollback_root_cause()
                 aws_env.delete_stack()
                 return
             sleep(10)

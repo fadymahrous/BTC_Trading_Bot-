@@ -1,0 +1,23 @@
+2025-06-17 14:27:54,191 - INFO - [Database_Engine] - Database configuration loaded successfully.
+2025-06-17 14:27:54,645 - INFO - [Database_Engine] - SQLAlchemy engine created successfully.
+2025-06-17 14:27:54,983 - INFO - [Database_Engine] - Database connection test successful. Query result: 1
+2025-06-17 14:27:55,008 - INFO - [Database_Engine] - Database configuration loaded successfully.
+2025-06-17 14:27:55,026 - INFO - [Database_Engine] - SQLAlchemy engine created successfully.
+2025-06-17 14:27:55,321 - INFO - [Database_Engine] - Database connection test successful. Query result: 1
+2025-06-17 14:27:55,337 - INFO - [Database_Engine] - Database configuration loaded successfully.
+2025-06-17 14:27:55,359 - INFO - [Database_Engine] - SQLAlchemy engine created successfully.
+2025-06-17 14:27:55,646 - INFO - [Database_Engine] - Database connection test successful. Query result: 1
+2025-06-17 14:27:55,658 - INFO - [main] - Starting 30m OHLC fetch and load.
+2025-06-17 14:27:59,137 - INFO - [Fetch_Online_OHLC] - Inserting 1 OHLC records into trade_btcusdt30m_ohlc...
+2025-06-17 14:27:59,202 - ERROR - [Fetch_Online_OHLC] - CheckViolation: missing partition. Creating it...
+2025-06-17 14:27:59,202 - INFO - [Create_DatabaseSchema] - Creating partition for 2025-06-17...
+2025-06-17 14:27:59,253 - INFO - [main] - OHLC fetch complete.
+2025-06-17 14:27:59,323 - ERROR - [main] - Error in combined loop: There is no Data passed, this is an empty dataset
+Traceback (most recent call last):
+  File "c:\Users\fadyz\Desktop\Personal\python-mess\Trading_Bot_Development\main.py", line 125, in main
+    cleaner = RawData_Weighting_OHLC(raw_data)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\fadyz\Desktop\Personal\python-mess\Trading_Bot_Development\Core_Trade\RawData_Weighting_OHLC.py", line 10, in __init__
+    raise ValueError("There is no Data passed, this is an empty dataset")
+ValueError: There is no Data passed, this is an empty dataset
+2025-06-17 14:27:59,326 - INFO - [main] - Next run scheduled at 2025-06-17 12:30:10+00:00 UTC. Waiting 1810.00 seconds.

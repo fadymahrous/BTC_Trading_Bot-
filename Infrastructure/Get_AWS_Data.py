@@ -114,7 +114,7 @@ class Get_AWS_Data:
         if stacks.get('Stacks') is not None and len(stacks.get('Stacks'))>0:
             return [stack.get('StackName','') for stack in stacks.get('Stacks')]
         else:
-            return None
+            return []
     
     def get_endpoint_of_dbinstanceidentifier(self,db_instance_id:str=None):
         if db_instance_id is None:
@@ -130,7 +130,7 @@ class Get_AWS_Data:
         except Exception as e:
             self.logger.error(f'We couldnt get the Endpoint of database {db_instance_id} as exception was raised Details:{e}')
             raise e
-        return None
+        return []
 
 
 

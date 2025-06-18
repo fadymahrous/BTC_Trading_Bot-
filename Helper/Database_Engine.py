@@ -29,7 +29,7 @@ class DatabaseEngine:
             self.logger.info("Database configuration loaded successfully.")
         except Exception as e:
             self.logger.error(f"Failed to load database configuration: {e}")
-            raise
+            raise e
 
         # Load endpoint from environment variable
         self.db_endpoint = getenv('db_endpoint')
@@ -49,7 +49,7 @@ class DatabaseEngine:
                 return True
         except Exception as e:
             self.logger.error(f"Database connection failed: {e}")
-            raise
+            return False
 
     def create_postgres_engine(self):
         """Create and return a SQLAlchemy engine for the configured PostgreSQL database."""
@@ -64,4 +64,8 @@ class DatabaseEngine:
                 return engine
         except SQLAlchemyError as e:
             self.logger.error(f"Failed to create SQLAlchemy engine: {e}")
-            raise
+            raise e
+        self.logger.error(f'The provided bd_endpoint is not correct, check the RDS endpoint string on AWS, the one provided : {self.db_endpoint}')
+        raise ValueError(f'The provided bd_endpoint is not correct, check the RDS endpoint string on AWS, the one provided : {self.db_endpoint}')
+
+        

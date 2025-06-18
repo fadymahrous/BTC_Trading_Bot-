@@ -1,8 +1,6 @@
 import pandas as pd
 from os import path
 from Helper.Database_Engine import DatabaseEngine
-from scipy.stats import linregress
-import numpy as np
 import re
 
 class Fetch_fromDB_OHLC:

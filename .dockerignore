@@ -5,7 +5,7 @@ __pycache__/
 *.log
 logs/*
 .DS_Store
-.Trading_Bod_Production
+.Trading_Bot_Development
 *.code-workspace
 main_BackGround_Get_OHLC_Production.py
 main_Dump-Load.py

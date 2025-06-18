@@ -34,7 +34,7 @@ class CreateDatabaseSchema:
 
         trade_ohlc_sql = f"""
         CREATE TABLE IF NOT EXISTS {base_table} (
-            date TIMESTAMPTZ NOT NULL,
+            date TIMESTAMPTZ UNIQUE NOT NULL,
             open NUMERIC,
             high NUMERIC,
             low NUMERIC,

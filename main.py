@@ -2,6 +2,7 @@ import time
 import json
 from os import path
 from datetime import datetime, timedelta, timezone
+import pandas as pd
 from Core_Trade.Fetch_Online_OHLC import FetchTradeMinute
 from Core_Trade.Fetch_fromDB_OHLC import Fetch_fromDB_OHLC
 from Core_Trade.RawData_Weighting_OHLC import RawData_Weighting_OHLC
@@ -16,14 +17,14 @@ class RealTimeTradeStrategy:
         self.waiting_for_confirmation = False
         self.session_gain = 0
         self.trade_record = {}
+        self.entry_evaluated_this_session = False
+
 
     def evaluate_entry(self, row):
         if (
-            row.get('volume_momentum') > 0 and 
             row.get('candle_figure') in ['Hammer', 'InvertedHammer'] and
             row.get('Bloodbath') == 1 and
-            row.get('Scaled_Close_10') < 0.4 and 
-            row.get('Scaled_Close_5') < 0.3 and
+            row.get('Scaled_Close_10') < 0.2 and 
             row.get('slope_5') < 0 and
             not self.active_trade
         ):
@@ -31,7 +32,7 @@ class RealTimeTradeStrategy:
 
         elif (
             self.waiting_for_confirmation and
-            row.get('gain') > 0 and
+            row.get('gain') > 230 and
             not self.active_trade
         ):
             self.active_trade = True
@@ -39,34 +40,46 @@ class RealTimeTradeStrategy:
             self.waiting_for_confirmation = False
             self.trade_record = {
                 'start': row.get('date'),
+                'entrance_gain':row.get('gain'),
                 'volume_momentum': row.get('volume_momentum'),
                 'Entrance_MDAC': row.get('MACD_Position'),
+                'slope_5': row.get('slope_5'),
+                'Scaled_Close_10': row.get('Scaled_Close_10'),
                 'close': row.get('close'),
                 'entry_type': 'Condition1_atBloodBath'
             }
-            logger.info('Enter Trade witth Condition1_atBloodBath.')
-
+            self.entry_evaluated_this_session = True
+            logger.info(' ===> Enter Trade witth Condition1_atBloodBath.')
+        #Condition 2
         elif (
-            11 < row.get('volume_momentum') < 30 and
+            300 < row.get('volume_momentum') and
             row.get('Bloodbath') == 0 and
             row.get('MACD_Position') > 0 and 
             row.get('avalanch') == 0 and 
-            row.get('slope_30') > 0 and
+            row.get('slope_5') > 0 and
             not self.active_trade
         ):
             self.active_trade = True
             self.session_gain = 0
             self.trade_record = {
                 'start': row.get('date'),
+                'entrance_gain':row.get('gain'),
                 'volume_momentum': row.get('volume_momentum'),
                 'Entrance_MDAC': row.get('MACD_Position'),
+                'slope_5': row.get('slope_5'),
+                'Scaled_Close_10': row.get('Scaled_Close_10'),
                 'close': row.get('close'),
                 'entry_type': 'Condition2_atVolumeMomentum'
             }
-            logger.info('Enter Trade witth Condition2_atVolumeMomentum.')
+            self.entry_evaluated_this_session = True
+            logger.info(' ===> Enter Trade witth Condition2_atVolumeMomentum.')
 
     def evaluate_exit(self, row):
-        raw_exit_trigger = row.get('avalanch') == 1 or row.get('gain') < -100
+        if self.entry_evaluated_this_session:
+            logger.info("No entry evaluated this session, skipping exit evaluation.")
+            self.entry_evaluated_this_session = False
+            return
+        raw_exit_trigger = row.get('avalanch') == 1 or row.get('gain_last_5interval') < -50
 
         if self.active_trade and raw_exit_trigger:
             self.session_gain += row.get('gain')
@@ -95,13 +108,14 @@ class RealTimeTradeStrategy:
 
 def wait_until_next_interval(interval_minutes=5, offset_seconds=10):
     """Waits until the next interval + offset (e.g., every 5 minutes + 10 seconds)"""
-    now = datetime.now(timezone.utc)
+    now_tmp = datetime.now(timezone.utc)
+    flooring='{interval}min'.format(interval=interval_minutes)
+    now=pd.to_datetime(now_tmp).floor(flooring)
     next_minute = (now.replace(second=0, microsecond=0) + timedelta(minutes=interval_minutes))
     next_run = next_minute + timedelta(seconds=offset_seconds)
-    wait_time = (next_run - now).total_seconds()
+    wait_time = (next_run - now_tmp).total_seconds()
     logger.info(f"Next run scheduled at {next_run} UTC. Waiting {wait_time:.2f} seconds.")
     time.sleep(wait_time)
-
 
 def main():
     strategy = RealTimeTradeStrategy()
@@ -110,12 +124,12 @@ def main():
 
     while True:
         try:
-            logger.info("Starting 5m OHLC fetch and load.")
-            BTC_fetcher.fetch_ohlc_and_load_to_db('5m')
+            logger.info("Starting 30m OHLC fetch and load.")
+            BTC_fetcher.fetch_ohlc_and_load_to_db('30m')
             logger.info("OHLC fetch complete.")
 
             # Run trade logic
-            raw_data = db_fetcher.get_OHLC_fromDB(symbol='BTC/USDT', interval='5m', since_hour=6)
+            raw_data = db_fetcher.get_OHLC_fromDB(symbol='BTC/USDT', interval='30m', since_hour=10)
             cleaner = RawData_Weighting_OHLC(raw_data)
             ohlc = cleaner.generate_clean_data()
 
@@ -130,8 +144,7 @@ def main():
         except Exception as e:
             logger.exception(f"Error in combined loop: {e}")
 
-        wait_until_next_interval(5, 10)
-
+        wait_until_next_interval(30, 10)
 
 if __name__ == '__main__':
     main()

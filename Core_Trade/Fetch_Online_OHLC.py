@@ -108,8 +108,11 @@ class FetchTradeMinute:
                 self.logger.info(f"Inserting {len(df_ohlc)} OHLC records into {self.table_name}...")
                 df_ohlc.to_sql(self.table_name, self.engine, schema='trade', if_exists='append', index=False)
             except IntegrityError as e:
-                self.logger.error("CheckViolation: likely missing partition. Creating it...")
-                self.schema_creator.create_partition(self.table_name, offset=0)
+                if 'no partition of relation' in str(e):
+                    self.logger.error("CheckViolation: missing partition. Creating it...")
+                    self.schema_creator.create_partition(self.table_name, offset=0)
+                else:
+                    self.logger.error(f"IntegrityError at inserting data: {e}")
             except Exception as e:
                 self.logger.error(f"Unexpected error inserting data: {e}")
                 print(type(e))
